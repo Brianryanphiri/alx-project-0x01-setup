@@ -11,10 +11,9 @@ interface PostsPageProps {
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [postList, setPostList] = useState<PostProps[]>(posts);
-  const [selectedPost, setSelectedPost] = useState<PostData | null>(null);
+  const [post, setPost] = useState<PostData | null>(null);
 
   const handleAddPost = (newPost: PostData) => {
-    // Add new post with generated ID
     const postWithId = { ...newPost, id: postList.length + 1 };
     setPostList((prev) => [postWithId, ...prev]);
   };
@@ -27,7 +26,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
           <h1 className="text-2xl font-semibold">Post Content</h1>
           <button
             onClick={() => {
-              setSelectedPost(null);
+              setPost(null);
               setModalOpen(true);
             }}
             className="bg-blue-700 px-4 py-2 rounded-full text-white"
@@ -53,7 +52,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
           isOpen={isModalOpen}
           onClose={() => setModalOpen(false)}
           onSubmit={handleAddPost}
-          initialData={selectedPost}
+          initialData={post}
         />
       )}
     </div>
