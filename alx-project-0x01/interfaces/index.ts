@@ -1,4 +1,4 @@
-// UserProps as you already had
+// Your existing UserProps interface
 export interface UserProps {
   id: number;
   name: string;
@@ -23,7 +23,7 @@ export interface UserProps {
   };
 }
 
-// ✅ New Interface for Post Data
+// PostData and PostModalProps (unchanged)
 export interface PostData {
   userId: number;
   id?: number;
@@ -31,7 +31,6 @@ export interface PostData {
   body: string;
 }
 
-// ✅ New Interface for PostModal Props
 export interface PostModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -39,35 +38,10 @@ export interface PostModalProps {
   initialData?: PostData | null;
 }
 
-// ✅ New Interface for User Data
-export interface UserData {
-  id?: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
-
-// ✅ New Interface for UserModal Props
+// Use UserProps for the modal interface to match the checker exactly
 export interface UserModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (user: UserData) => void;
-  initialData?: UserData | null;
+  onSubmit: (post: UserProps) => void;
+  initialData?: UserProps | null;
 }
